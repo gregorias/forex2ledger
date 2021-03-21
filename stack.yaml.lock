@@ -4,11 +4,11 @@
 #   https://docs.haskellstack.org/en/stable/lock_files
 
 snapshots:
-- original: lts-17.5
+- original: lts-17.7
   completed:
-    sha256: 78e8ebabf11406261abbc95b44f240acf71802630b368888f6d758de7fc3a2f7
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/17/5.yaml
-    size: 565266
+    sha256: 1b5e4124989399e60e7a7901f0cefd910beea546131fb07a13a7208c4cc8b7ee
+    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/17/7.yaml
+    size: 565715
 packages:
 - original:
     hackage: currency-codes-3.0.0.1@sha256:a4b24669dd91e805b11d9eb267becd0ba6d726927e535e03d5f3f368f44c1cf4,2902

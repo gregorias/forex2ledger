@@ -26,6 +26,7 @@ library
   exposed-modules:
       AppId
       Config
+      Ledger
       OpenExchangeRates
   other-modules:
       Paths_forex2ledger
@@ -39,6 +40,7 @@ library
     , base >=4.13 && <5
     , containers
     , currency-codes
+    , hledger-lib >=1.21
     , relude
     , text
     , time
@@ -69,6 +71,7 @@ test-suite forex2ledger-test
   main-is: Spec.hs
   other-modules:
       Test.Config
+      Test.Ledger
       Test.OpenExchangeRates
       Paths_forex2ledger
   hs-source-dirs:

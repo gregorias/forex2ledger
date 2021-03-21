@@ -9,7 +9,7 @@ module OpenExchangeRates (
 import AppId (AppId (AppId))
 import Config (Config (Config))
 import qualified Data.Aeson as Aeson
-import Data.Currency (Alpha, Currency (alpha))
+import Data.Currency (Alpha)
 import Data.Fixed (E6, Fixed)
 import qualified Data.HashMap.Strict as HashMap
 import qualified Data.Text as T
@@ -86,7 +86,7 @@ getLatestUrl (Config (AppId appId) base targets) =
         ]
     }
  where
-  cur2string = show . alpha
+  cur2string = show
 
 -- | Fetches rates from openexchangerates.org
 fetchRates :: Config -> IO (Either Text OerRates)

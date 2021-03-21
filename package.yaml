@@ -47,6 +47,7 @@ library:
   - tomland
   - unordered-containers
   - url
+  - hledger-lib >= 1.21
 
 executables:
   forex2ledger:

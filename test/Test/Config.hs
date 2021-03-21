@@ -10,7 +10,7 @@ import Config (
   Config (..),
   parseConfig,
  )
-import Data.Currency (Alpha (..), fromAlpha)
+import Data.Currency (Alpha (..))
 import Relude
 import Test.Hspec (
   SpecWith,
@@ -31,8 +31,8 @@ tests = do
           `shouldBe` Right
             ( Config
                 "SAMPLEAPPID"
-                (fromAlpha USD)
-                [ fromAlpha CHF
-                , fromAlpha EUR
+                USD
+                [ CHF
+                , EUR
                 ]
             )

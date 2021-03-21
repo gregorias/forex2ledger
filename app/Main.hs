@@ -7,6 +7,7 @@ import Config (
   parseConfig,
  )
 import qualified Data.Text.IO as T
+import Ledger (ratesToLedger)
 import OpenExchangeRates (fetchRates)
 import Options.Applicative (
   Parser,
@@ -43,15 +44,15 @@ run (ConfigFilePath configFilePath) = do
       T.hPutStrLn stderr "Could not parse the config file."
       T.hPutStrLn stderr err
       exitFailure
-    Right config@(Config _appId _ _) -> do
-      tmpText <- fetchRates config
-      case tmpText of
+    Right config@(Config _appId base _) -> do
+      oerResult <- fetchRates config
+      case oerResult of
         Left err -> do
           T.hPutStrLn stderr "Could not fetch rates from OER."
           T.hPutStrLn stderr err
           exitFailure
-        Right result -> do
-          T.putStrLn $ show result
+        Right rates -> do
+          T.putStr $ ratesToLedger base rates
 
 main :: IO ()
 main = do

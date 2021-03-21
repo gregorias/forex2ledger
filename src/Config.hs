@@ -7,27 +7,23 @@ module Config (
 ) where
 
 import AppId (AppId (..))
-import Data.Currency (Currency (alpha), fromAlpha)
-import qualified Data.Currency
+import Data.Currency (Alpha)
 import Relude
 import Toml (TomlBiMap, TomlCodec, prettyTomlDecodeErrors, (.=))
 import qualified Toml
 
 data Config = Config
   { configOpenExchangeRateAppId :: !AppId
-  , configBaseCurrency :: !Currency
-  , configTargetCurrencies :: [Currency]
+  , configBaseCurrency :: !Alpha
+  , configTargetCurrencies :: [Alpha]
   }
   deriving stock (Show, Eq)
-
-currencyAlphaBiMap :: TomlBiMap Currency Data.Currency.Alpha
-currencyAlphaBiMap = Toml.iso alpha fromAlpha
 
 alphaBiMap :: TomlBiMap Data.Currency.Alpha Toml.AnyValue
 alphaBiMap = Toml._EnumBounded
 
-currencyBiMap :: TomlBiMap Currency Toml.AnyValue
-currencyBiMap = currencyAlphaBiMap >>> alphaBiMap
+currencyBiMap :: TomlBiMap Alpha Toml.AnyValue
+currencyBiMap = alphaBiMap
 
 configCodec :: TomlCodec Config
 configCodec =
