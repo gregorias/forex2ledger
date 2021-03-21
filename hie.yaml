@@ -1,0 +1,13 @@
+cradle:
+  stack:
+    - path: "./src"
+      component: "forex2ledger:lib"
+
+    - path: "./app/Main.hs"
+      component: "forex2ledger:exe:forex2ledger"
+
+    - path: "./app/Paths_forex2ledger.hs"
+      component: "forex2ledger:exe:forex2ledger"
+
+    - path: "./test"
+      component: "forex2ledger:test:forex2ledger-test"

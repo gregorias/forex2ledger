@@ -1,0 +1,82 @@
+name:                forex2ledger
+version:             0.1.0.0
+github:              "gregorias/forex2ledger"
+license:             AGPL-3
+author:              "Grzegorz Milka"
+maintainer:          "grzegorzmilka@gmail.com"
+copyright:           "Copyright (c) 2021 Grzegorz Milka"
+
+extra-source-files:
+- README.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/gregorias/forex2ledger#readme>
+
+# Defaults recommended by https://kowainik.github.io/posts/2019-02-06-style-guide#default-extensions
+# Also use Relude
+default-extensions:
+  DerivingStrategies
+  GeneralisedNewtypeDeriving
+  InstanceSigs
+  LambdaCase
+  NoImplicitPrelude
+  NumericUnderscores
+  ScopedTypeVariables
+  TupleSections
+  TypeApplications
+  UnicodeSyntax
+
+dependencies:
+- base >= 4.13 && < 5
+
+library:
+  source-dirs: src
+  dependencies:
+  - HTTP
+  - aeson
+  - currency-codes
+  - relude
+  - containers
+  - text
+  - time
+  - tomland
+  - unordered-containers
+  - url
+
+executables:
+  forex2ledger:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - optparse-applicative
+    - forex2ledger
+    - relude
+    - text
+
+tests:
+  forex2ledger-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    - -main-is Spec
+    dependencies:
+    - aeson
+    - containers
+    - currency-codes
+    - forex2ledger
+    - hspec
+    - hspec-expectations-pretty-diff
+    - relude
+    - time
