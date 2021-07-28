@@ -1,5 +1,5 @@
 name:                forex2ledger
-version:             1.0.0.1
+version:             1.0.0.2
 category:            Finance
 github:              "gregorias/forex2ledger"
 license:             AGPL-3
@@ -67,13 +67,12 @@ executables:
 
 tests:
   forex2ledger-test:
-    main:                Spec.hs
+    main:                Main.hs
     source-dirs:         test
     ghc-options:
     - -threaded
     - -rtsopts
     - -with-rtsopts=-N
-    - -main-is Spec
     dependencies:
     - aeson
     - containers

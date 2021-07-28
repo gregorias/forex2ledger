@@ -1,4 +1,4 @@
-module Spec (main) where
+module Main (main) where
 
 import Relude
 import qualified Test.Config as Config

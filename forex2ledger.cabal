@@ -5,7 +5,7 @@ cabal-version: 1.12
 -- see: https://github.com/sol/hpack
 
 name:           forex2ledger
-version:        1.0.0.1
+version:        1.0.0.2
 synopsis:       Print Forex quotes in Ledger format
 description:    Please see the README on GitHub at <https://github.com/gregorias/forex2ledger#readme>
 category:       Finance
@@ -70,7 +70,7 @@ executable forex2ledger
 
 test-suite forex2ledger-test
   type: exitcode-stdio-1.0
-  main-is: Spec.hs
+  main-is: Main.hs
   other-modules:
       Test.Config
       Test.Ledger
@@ -80,7 +80,7 @@ test-suite forex2ledger-test
       test
   default-extensions:
       DerivingStrategies GeneralisedNewtypeDeriving InstanceSigs LambdaCase NoImplicitPrelude NumericUnderscores ScopedTypeVariables TupleSections TypeApplications UnicodeSyntax
-  ghc-options: -threaded -rtsopts -with-rtsopts=-N -main-is Spec
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       aeson
     , base >=4.13 && <5
