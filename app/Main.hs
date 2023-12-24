@@ -19,19 +19,27 @@ import Options.Applicative (
   metavar,
   progDesc,
   strOption,
+  value,
  )
 import Relude
 
 newtype ConfigFilePath = ConfigFilePath FilePath
   deriving newtype (Show, Eq)
 
-configFilePathP :: Parser ConfigFilePath
-configFilePathP =
+defaultConfigFilePath :: IO (Maybe String)
+defaultConfigFilePath = runMaybeT $ do
+  configHomeMaybe <- lookupEnv "XDG_CONFIG_HOME"
+  configHome <- hoistMaybe configHomeMaybe
+  return $ configHome <> "/findata/forex2ledger.toml"
+
+configFilePathP :: Maybe String -> Parser ConfigFilePath
+configFilePathP defVal =
   ConfigFilePath
     <$> strOption
       ( long "config_file"
           <> metavar "FILE"
           <> help "The TOML config file."
+          <> maybe mempty value defVal
       )
 
 run :: ConfigFilePath -> IO ()
@@ -54,12 +62,13 @@ run (ConfigFilePath configFilePath) = do
 
 main :: IO ()
 main = do
-  configFilePath <- execParser opts
+  defaultConfigFilePathMaybe <- defaultConfigFilePath
+  configFilePath <- execParser (opts defaultConfigFilePathMaybe)
   run configFilePath
  where
-  opts =
+  opts defaultConfigFilePathMaybe =
     info
-      (configFilePathP <**> helper)
+      (configFilePathP defaultConfigFilePathMaybe <**> helper)
       ( fullDesc
           <> progDesc "Print Forex rates in Ledger format."
           <> header "forex2ledger"
