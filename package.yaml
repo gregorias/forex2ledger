@@ -1,15 +1,15 @@
-name:                forex2ledger
-version:             1.0.0.2
-category:            Finance
-github:              "gregorias/forex2ledger"
-license:             AGPL-3
-author:              "Grzegorz Milka"
-maintainer:          "grzegorzmilka@gmail.com"
-copyright:           "Copyright (c) 2021 Grzegorz Milka"
-synopsis:            Print Forex quotes in Ledger format
+name: forex2ledger
+version: 1.0.0.3
+category: Finance
+github: "gregorias/forex2ledger"
+license: AGPL-3
+author: "Grzegorz Milka"
+maintainer: "grzegorzmilka@gmail.com"
+copyright: "Copyright (c) 2021-23 Grzegorz Milka"
+synopsis: Print Forex quotes in Ledger format
 
 extra-source-files:
-- README.md
+  - README.md
 
 # Metadata used when publishing your package
 # synopsis:            Short description of your package
@@ -17,68 +17,73 @@ extra-source-files:
 # To avoid duplicated efforts in documentation and dealing with the
 # complications of embedding Haddock markup inside cabal files, it is
 # common to point users to the README.md file.
-description:         Please see the README on GitHub at <https://github.com/gregorias/forex2ledger#readme>
+description: Please see the README on GitHub at <https://github.com/gregorias/forex2ledger#readme>
 
-# Defaults recommended by https://kowainik.github.io/posts/2019-02-06-style-guide#default-extensions
-# Also use Relude
+language: GHC2021
+
 default-extensions:
-  DerivingStrategies
-  GeneralisedNewtypeDeriving
-  InstanceSigs
-  LambdaCase
-  NoImplicitPrelude
-  NumericUnderscores
-  ScopedTypeVariables
-  TupleSections
-  TypeApplications
-  UnicodeSyntax
+  - DataKinds
+  - DerivingStrategies
+  - DerivingVia
+  - DuplicateRecordFields
+  - FunctionalDependencies
+  - GADTs
+  - LambdaCase
+  - MultiWayIf
+  - NoImplicitPrelude
+  - OverloadedLabels
+  - OverloadedRecordDot
+  - OverloadedStrings
+  - QuasiQuotes
+  - TypeFamilies
+  - TypeOperators
 
 dependencies:
-- base >= 4.13 && < 5
+  - base >= 4.15 && < 5
 
 library:
   source-dirs: src
   dependencies:
-  - HTTP
-  - aeson
-  - currency-codes
-  - relude
-  - containers
-  - text
-  - time
-  - tomland
-  - unordered-containers
-  - url
-  - hledger-lib >= 1.21
+    - HTTP
+    - aeson
+    - currency-codes
+    - relude
+    - containers
+    - text
+    - time
+    - tomland
+    - unordered-containers
+    - url
+    - hledger-lib >= 1.21
 
 executables:
   forex2ledger:
-    main:                Main.hs
-    source-dirs:         app
+    main: Main.hs
+    source-dirs: app
     ghc-options:
-    - -threaded
-    - -rtsopts
-    - -with-rtsopts=-N
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
     dependencies:
-    - optparse-applicative
-    - forex2ledger
-    - relude
-    - text
+      - optparse-applicative
+      - forex2ledger
+      - relude
+      - text
 
 tests:
   forex2ledger-test:
-    main:                Main.hs
-    source-dirs:         test
+    main: Main.hs
+    source-dirs: test
     ghc-options:
-    - -threaded
-    - -rtsopts
-    - -with-rtsopts=-N
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
     dependencies:
-    - aeson
-    - containers
-    - currency-codes
-    - forex2ledger
-    - hspec
-    - hspec-expectations-pretty-diff
-    - relude
-    - time
+      - aeson
+      - containers
+      - currency-codes
+      - forex2ledger
+      - hspec
+      - hspec-expectations-pretty-diff
+      - relude
+      - time

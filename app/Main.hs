@@ -1,12 +1,10 @@
-{-# LANGUAGE OverloadedStrings #-}
-
 module Main (main) where
 
 import Config (
   Config (..),
   parseConfig,
  )
-import qualified Data.Text.IO as T
+import Data.Text.IO qualified as T
 import Ledger (ratesToLedger)
 import OpenExchangeRates (fetchRates)
 import Options.Applicative (

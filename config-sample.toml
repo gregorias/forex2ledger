@@ -1,7 +1,4 @@
 # The AppId for https://openexchangerates.org/
 oer_app_id = 'SAMPLEAPPID'
 currency.base = 'USD'
-currency.targets = [
-  'CHF',
-  'EUR',
-]
+currency.targets = ['CHF', 'EUR']
